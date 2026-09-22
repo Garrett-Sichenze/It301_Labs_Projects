@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab7</title>
     <style>
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            height: 100vh;
+        }
+
         #right_parent{
             display: flex;
             width: 80vh;
             flex-wrap: wrap;
             align-items: baseline;
             justify-content: flex-end;
+            overflow-y:auto;
 
         }
 
@@ -31,13 +44,11 @@
             flex-direction: column;
             justify-content: flex-start;
             overflow-y:auto;
+            flex-shrink: 0;
 
         }
 
-        body{
-            display: flex;
-            overflow-y:auto;
-        }
+
         div p{
             font-size: 32px;
             display: flex;
