@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab10</title>
+</head>
+<body>
+    <script>
+        do{
+        let bill = Number(prompt('What is your bill? Answer should be a number greater than zero.'));
+       
+        if (bill == 0 || null) {
+            let bill = Number(prompt('Input must be a number greater than zero'));
+        } else if(bill < 0){
+            let bill = Number(prompt('Input cannot be negative'));
+        } else {
+            document.write(bill * 0.1 + bill)
+        }
+         } while (isNaN(bill) == false);
+
+    </script>
+</body>
+</html>
