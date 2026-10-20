@@ -38,35 +38,60 @@
     <button id="calculate" type="button">Calculate</button>
     <button id="clear" type="button">Clear</button>
     <script>
-        const add = (a, b) => a + b;
-        const sub = (a, b) => a - b;
-        const mult = (a, b) => a * b;
-        const div = (a, b) => a / b;
-        const result = document.getElementById('result');
 
-        const name = document.getElementById('name');
-        document.getElementById('button').addEventListener('click', function(){
-            result.textContent =  `Hello ${name.value}`;
-        });
+    const add = (a, b) => a + b;
+    const sub = (a, b) => a - b;
+    const mult = (a, b) => a * b;
+    const div = (a, b) => a / b;
 
-        const num1 = document.getElementById('num1');
-        document.getElementById('button1').addEventListener('click', function(){
-        });
+    const actions = { add, sub, mult, div };
 
-        const num2 = document.getElementById('num2');
-        document.getElementById('button2').addEventListener('click', function(){
-        });
+    const result = document.getElementById('result');
+    const name = document.getElementById('name');
+    const num1 = document.getElementById('num1');
+    const num2 = document.getElementById('num2');
+    const calc_result = document.getElementById('calc_result');
 
-        document.getElementById('select').addEventListener('click', function(){
-            const result = document.querySelector('[name = action]:checked');
-            console.log(result.value);
-        })
+    let chosenAction = null;
 
-        document.getElementById('calculate').addEventListener('click', function(){
-            if (result === add){
-            calc_result.textContent = add(Number(num1.value),Number(num2.value))};
-        });
+    document.getElementById('button').addEventListener('click', function(){
+        result.textContent = `Hello ${name.value}`;
+    });
 
+    document.getElementById('button2').addEventListener('click', function(){
+        console.log('Second number:', num2.value);
+    });
+
+    document.getElementById('select').addEventListener('click', function(){
+        const selected = document.querySelector('[name="action"]:checked');
+        chosenAction = selected ? selected.value : null;
+        console.log(chosenAction);
+    });
+
+    document.getElementById('calculate').addEventListener('click', function(){
+        if (!chosenAction) {
+            calc_result.textContent = 'Please select an action first';
+            return;
+        }
+
+        const a = Number(num1.value);
+        const b = Number(num2.value);
+
+        if (chosenAction === 'div' && b === 0) {
+            calc_result.textContent = 'Cannot divide by zero';
+            return;
+        }
+
+        calc_result.textContent = actions[chosenAction](a, b);
+    });
+
+    document.getElementById('clear').addEventListener('click', function(){
+        num1.value = '';
+        num2.value = '';
+        calc_result.textContent = '';
+        chosenAction = null;
+        document.querySelectorAll('[name="action"]').forEach(r => r.checked = false);
+    });
     </script>
     
 </body>
