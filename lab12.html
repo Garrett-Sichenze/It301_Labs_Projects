@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab12</title>
+</head>
+<body>
+    <form action="#">
+        <label for="name">What is your name? </label>
+        <input type="string" id="name"> <br> <br>
+        <button id="button" type="button">Submit</button>
+    </form>
+    <p id="result"></p>
+
+    <p>Basic Calculator</p>
+    <form action="#">
+        <label for="num1">First Number </label>
+        <input type="number" id="num1"> <br>
+        <button id="button1" type="button">Submit</button>
+    </form>
+
+    <form action="#">
+        <label for="num2">Second Number </label>
+        <input type="number" id="num2"> <br>
+        <button id="button2" type="button">Submit</button>
+    </form>    
+
+    <form action="#">
+        <input type="radio" name="action" value="add">Add<br>
+        <input type="radio" name="action" value="sub">Subtract<br>
+        <input type="radio" name="action" value="mult">Multiply<br>
+        <input type="radio" name="action" value="div">Divide<br>
+
+        <button id="select" type="button">Select</button>
+    </form>
+    <p id="calc_result"></p> <br> <br>
+    <button id="calculate" type="button">Calculate</button>
+    <button id="clear" type="button">Clear</button>
+    <script>
+        const add = (a, b) => a + b;
+        const sub = (a, b) => a - b;
+        const mult = (a, b) => a * b;
+        const div = (a, b) => a / b;
+        const result = document.getElementById('result');
+
+        const name = document.getElementById('name');
+        document.getElementById('button').addEventListener('click', function(){
+            result.textContent =  `Hello ${name.value}`;
+        });
+
+        const num1 = document.getElementById('num1');
+        document.getElementById('button1').addEventListener('click', function(){
+        });
+
+        const num2 = document.getElementById('num2');
+        document.getElementById('button2').addEventListener('click', function(){
+        });
+
+        document.getElementById('select').addEventListener('click', function(){
+            const result = document.querySelector('[name = action]:checked');
+            console.log(result.value);
+        })
+
+        document.getElementById('calculate').addEventListener('click', function(){
+            if (result === add){
+            calc_result.textContent = add(Number(num1.value),Number(num2.value))};
+        });
+
+    </script>
+    
+</body>
+</html>
