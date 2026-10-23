@@ -1,0 +1,208 @@
+/* Home Page */
+
+/* Brick wall hero with the neon sign */
+.bar-wall {
+  /* POSITIONING: relative, so the open sign inside can be
+     placed with absolute positioning */
+  position: relative;
+  padding: var(--space-l) var(--space-m);
+  border-radius: var(--radius);
+  text-align: center;
+  background-color: var(--brick);
+  /* Repeating gradients draw the mortar lines of the bricks */
+  background-image:
+    repeating-linear-gradient(0deg, var(--brick-mortar) 0 3px, transparent 3px 40px),
+    repeating-linear-gradient(90deg, var(--brick-mortar) 0 3px, transparent 3px 90px);
+  border: 10px solid var(--wood);
+  margin-bottom: var(--space-l);
+}
+
+/* The big glowing Paddy's Pub sign */
+.neon-sign {
+  display: inline-block;
+  font-family: var(--font-neon);
+  font-size: 4rem;
+  color: var(--neon-green);
+  padding: var(--space-s) var(--space-m);
+  margin: var(--space-m) 0;
+  background-color: rgb(0 0 0 / 70%);
+  border: 4px solid var(--neon-green);
+  border-radius: 20px;
+  text-shadow:
+    0 0 6px var(--neon-green),
+    0 0 18px var(--neon-green),
+    0 0 36px #0a8f45;
+  box-shadow: 0 0 20px var(--neon-green), inset 0 0 20px rgb(61 255 143 / 40%);
+  animation: flicker 6s infinite;
+}
+
+/* Small open neon sign hanging in the corner.
+   Positioning: absolute  */
+.open-sign {
+  position: absolute;
+  top: var(--space-m);
+  right: var(--space-m);
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: #ff6b6b;
+  background-color: rgb(0 0 0 / 75%);
+  border: 3px solid #ff6b6b;
+  border-radius: 8px;
+  text-shadow: 0 0 8px #ff3b3b;
+  transform: rotate(6deg);
+}
+
+.bar-wall .welcome {
+  max-width: 650px;
+  margin: 0 auto var(--space-m);
+  padding: var(--space-s) var(--space-m);
+  background-color: rgb(0 0 0 / 70%);
+  border-radius: var(--radius);
+  font-size: 1.2rem;
+}
+
+/* Neon flicker animation (turned off for reduced-motion users in style.css) */
+@keyframes flicker {
+  0%, 92%, 100% { opacity: 1; }
+  93% { opacity: 0.4; }
+  94% { opacity: 1; }
+  96% { opacity: 0.6; }
+}
+
+/* Chalkboard and picture row */
+.bar-back {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-m);
+  margin-bottom: var(--space-l);
+}
+
+.chalkboard {
+  background-color: var(--chalk-board);
+  border: 12px solid var(--wood-light);
+  border-radius: 6px;
+  padding: var(--space-m);
+  box-shadow: inset 0 0 30px rgb(0 0 0 / 60%);
+}
+
+.chalkboard h2 {
+  color: #fff;
+}
+
+.chalkboard ul {
+  margin: 0;
+  padding-left: var(--space-m);
+}
+
+.chalkboard li {
+  margin-bottom: var(--space-s);
+}
+
+.bar-back figure {
+  margin: 0;
+  text-align: center;
+}
+
+.bar-back figcaption {
+  margin-top: var(--space-s);
+  color: var(--cream-muted);
+  font-style: italic;
+}
+
+/* Bar counter with drink-coaster facts */
+.bar-counter {
+  padding: var(--space-m);
+  border-radius: var(--radius);
+  /* Wood grain made from gradients */
+  background-color: var(--wood);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--wood) 0 60px,
+    var(--wood-light) 60px 64px
+  );
+  border-top: 14px solid var(--wood-light);
+  margin-bottom: var(--space-l);
+}
+
+.bar-counter h2 {
+  text-align: center;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.coasters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-m);
+}
+
+/* Each fact is a round coaster */
+.coasters li {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-m);
+  background-color: var(--cream);
+  color: var(--wood-darkest);
+  border: 6px double var(--brick);
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.coasters strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--brick);
+}
+
+/* Pick a booth section to link the other pages */
+.booths {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-m);
+}
+
+.booths h3 a {
+  text-decoration: none;
+}
+
+/* 
+  MEDIA QUERY - small screens, 700px and narrower.
+  The chalkboard/picture row and the booth grid stack into
+  one column, and the neon sign gets smaller so it fits.
+    */
+@media (max-width: 700px) {
+  .neon-sign {
+    font-size: 2.2rem;
+    margin-top: var(--space-l);
+  }
+
+  .open-sign {
+    font-size: 1.2rem;
+    top: var(--space-s);
+    right: var(--space-s);
+  }
+
+  .bar-back,
+  .booths {
+    grid-template-columns: 1fr;
+  }
+
+  .coasters li {
+    width: 150px;
+    height: 150px;
+    font-size: 0.85rem;
+  }
+}

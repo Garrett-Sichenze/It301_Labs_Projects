@@ -1,0 +1,128 @@
+/* 
+  behind-the-scenes.css  -  styles ONLY for behind-the-scenes.html
+  A vertical timeline, a two-column "on location" section,
+  and expandable fun-fact boxes.
+  */
+
+/* Timeline */
+.timeline {
+  /* POSITIONING: relative, so the vertical line (::before)
+     and the dots can be placed with absolute positioning */
+  position: relative;
+  list-style: none;
+  margin: 0 0 var(--space-l);
+  padding: 0 0 0 var(--space-l);
+}
+
+/* The vertical line running down the timeline */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 14px;
+  width: 4px;
+  background-color: var(--gold);
+}
+
+.timeline li {
+  position: relative;
+  margin-bottom: var(--space-m);
+}
+
+/* Glowing dot next to each year.  POSITIONING: absolute */
+.timeline li::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  left: calc(-1 * var(--space-l) + 6px);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.timeline .year {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--neon-green);
+  line-height: 1.2;
+}
+
+.timeline p {
+  margin: 0;
+}
+
+/* On location text and image side by side */
+.location {
+  display: flex;
+  gap: var(--space-l);
+  align-items: center;
+  margin-bottom: var(--space-l);
+}
+
+.location-text {
+  flex: 3;
+}
+
+.location figure {
+  flex: 2;
+  margin: 0;
+}
+
+.location figcaption {
+  margin-top: var(--space-s);
+  font-size: 0.95rem;
+  color: var(--cream-muted);
+  text-align: center;
+}
+
+/* Expandable fun facts */
+.fun-facts {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.fun-facts details {
+  padding: var(--space-s) var(--space-m);
+}
+
+.fun-facts summary {
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
+.fun-facts details[open] summary {
+  color: var(--neon-green);
+  margin-bottom: var(--space-s);
+}
+
+.fun-facts details p {
+  margin: 0;
+}
+
+/* 
+  MEDIA QUERY (behind-the-scenes page) - small screens,
+  700px and narrower. The location section stacks into one
+  column and the timeline uses less left space.
+    */
+@media (max-width: 700px) {
+  .location {
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .timeline {
+    padding-left: 2.5rem;
+  }
+
+  .timeline li::before {
+    left: -2.5rem;
+    margin-left: 6px;
+  }
+}

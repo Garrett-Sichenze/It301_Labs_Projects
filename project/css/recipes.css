@@ -1,0 +1,136 @@
+
+/* Recipe cards */
+.recipe {
+  margin-bottom: var(--space-l);
+}
+
+.recipe-meta {
+  color: var(--cream-muted);
+  font-style: italic;
+}
+
+/* Ingredients and steps side by side */
+.recipe-body {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-m);
+}
+
+.recipe-body h3 {
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+
+.recipe-body ul,
+.recipe-body ol {
+  margin: 0;
+  padding-left: var(--space-m);
+}
+
+.recipe-body li {
+  margin-bottom: 0.4rem;
+}
+
+/* Review boxes */
+.review {
+  margin-top: var(--space-m);
+  padding: var(--space-m);
+  background-color: var(--cream);
+  color: var(--wood-darkest);
+  border-radius: var(--radius);
+}
+
+.review h3 {
+  color: var(--brick);
+  font-size: 1.4rem;
+}
+
+.review p {
+  margin: 0;
+}
+
+.stars {
+  font-size: 1.5rem;
+  color: var(--brick);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-s);
+}
+
+/* Review form */
+.review-form {
+  max-width: 700px;
+  margin: 0 auto var(--space-l);
+}
+
+.form-row {
+  margin-bottom: var(--space-m);
+}
+
+.review-form label,
+.review-form legend {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.review-form input[type="text"],
+.review-form input[type="email"],
+.review-form select,
+.review-form textarea {
+  width: 100%;
+  padding: var(--space-s);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--wood-darkest);
+  background-color: var(--cream);
+  border: 2px solid var(--wood-light);
+  border-radius: 6px;
+}
+
+.review-form fieldset {
+  border: 2px solid var(--wood-light);
+  border-radius: 6px;
+  padding: var(--space-s) var(--space-m);
+  margin: 0 0 var(--space-m);
+}
+
+.rating-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.rating-options label {
+  display: inline;
+  font-weight: 400;
+}
+
+/* Red outline on fields with invalid inputs */
+.review-form input:user-invalid,
+.review-form textarea:user-invalid {
+  border-color: #ff6b6b;
+}
+
+.hint {
+  font-size: 0.95rem;
+  color: var(--cream-muted);
+  margin: 0.3rem 0 0;
+}
+
+/* 
+  MEDIA QUERY - small screens, 700px and
+  narrower. Ingredients move above the steps, and the
+  back-to-top button gets smaller and closer to the corner.
+    */
+@media (max-width: 700px) {
+  .recipe-body {
+    grid-template-columns: 1fr;
+  }
+
+  .back-to-top {
+    bottom: var(--space-s);
+    right: var(--space-s);
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

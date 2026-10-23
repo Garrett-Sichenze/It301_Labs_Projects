@@ -1,0 +1,278 @@
+
+/* ---------- Variables so I don't need to keep writing stuff out ---------- */
+:root {
+  --wood-darkest: #1c110a;   /* page background            */
+  --wood-dark: #2b1a10;      /* panels / header            */
+  --wood: #4a2c1a;           /* wood trim                   */
+  --wood-light: #6b4226;     /* wood highlights             */
+  --brick: #7a3324;          /* brick wall                  */
+  --brick-mortar: #3a1a12;   /* brick mortar lines          */
+  --cream: #f5ecd7;          /* main text color             */
+  --cream-muted: #d9c9a8;    /* secondary text              */
+  --neon-green: #3dff8f;     /* Paddy's neon sign           */
+  --gold: #f0b429;           /* accents, links, stars       */
+  --chalk-board: #23302a;    /* chalkboard background       */
+
+  /* Fonts for headings, body, and for neon signs */
+  --font-heading: "Bebas Neue", Impact, sans-serif;
+  --font-body: "Source Sans 3", Arial, sans-serif;
+  --font-neon: "Monoton", "Bebas Neue", sans-serif;
+/* Standardized spacing I can reuse */
+  --space-s: 0.75rem;
+  --space-m: 1.5rem;
+  --space-l: 3rem;
+  --radius: 10px;
+  --max-width: 1100px;
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--cream);
+  background-color: var(--wood-darkest);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin: 0 0 var(--space-s);
+}
+
+/* Font sizes for headers */
+h1 { font-size: 3rem; }
+h2 { font-size: 2.3rem; color: var(--gold); }
+h3 { font-size: 1.7rem; }
+
+p {
+  margin: 0 0 var(--space-m);
+}
+
+/* Makes links gold */
+a {
+  color: var(--gold);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--neon-green);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Visible keyboard focus for accessibility */
+:focus-visible {
+  outline: 3px solid var(--neon-green);
+  outline-offset: 3px;
+}
+
+/* Skip link: hidden until a keyboard user tabs to it.
+   POSITIONING METHOD #1: absolute */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-s);
+  z-index: 100;
+  padding: var(--space-s) var(--space-m);
+  background: var(--gold);
+  color: var(--wood-darkest);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: var(--space-s);
+}
+
+/* Hides text visually but keeps it for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Header (title-card style, like the show's intro) */
+.site-header {
+  background-color: #000;
+  text-align: center;
+  padding: var(--space-m) var(--space-m) var(--space-s);
+}
+
+.site-title {
+  margin: 0;
+  font-size: 2.4rem;
+  color: #fff;
+}
+
+.site-tagline {
+  margin: 0;
+  color: var(--cream-muted);
+  font-style: italic;
+}
+
+/*  Navigation bar 
+  Positioning method is sticky - the nav stays at the top
+   of the screen while the user scrolls. */
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--wood);
+  border-bottom: 4px solid var(--wood-light);
+}
+/* Instructions for the items in the nav bar */
+.main-nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 var(--space-s);
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  display: block;
+  padding: var(--space-s) var(--space-m);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  background-color: var(--wood-dark);
+  color: var(--neon-green);
+}
+
+/* Highlights the page the user is currently on */
+.main-nav a[aria-current="page"] {
+  background-color: var(--wood-darkest);
+  color: var(--gold);
+}
+
+/*  Main content area  */
+main {
+  display: block;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-l) var(--space-m);
+}
+
+/* Intro block reused at the top of every inner page */
+.page-intro {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto var(--space-l);
+}
+
+/* Reusable content box */
+.card {
+  background-color: var(--wood-dark);
+  border: 2px solid var(--wood-light);
+  border-radius: var(--radius);
+  padding: var(--space-m);
+}
+
+/* Reusable button-style link */
+.btn {
+  display: inline-block;
+  padding: var(--space-s) var(--space-m);
+  background-color: var(--gold);
+  color: var(--wood-darkest);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: var(--neon-green);
+  color: var(--wood-darkest);
+}
+
+/* Footer */
+.site-footer {
+  background-color: #000;
+  color: var(--cream-muted);
+  text-align: center;
+  padding: var(--space-m);
+  font-size: 0.95rem;
+}
+
+.site-footer p {
+  margin: 0 0 var(--space-s);
+}
+
+.site-footer ul {
+  list-style: none;
+  margin: 0 0 var(--space-s);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+/* 
+  MEDIA QUERY - small screens, 700px and narrower.
+  Shrinks headings, stacks the nav links, and reduces the
+  page padding so content still never touches the edges.
+    */
+@media (max-width: 700px) {
+  h1 { font-size: 2.3rem; }
+  h2 { font-size: 1.9rem; }
+
+  .site-title {
+    font-size: 1.8rem;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-nav a {
+    padding: 0.5rem var(--space-s);
+  }
+
+  main {
+    padding: var(--space-m) var(--space-s);
+  }
+}
+
+/* animations toggle (WCAG-friendly) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

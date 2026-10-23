@@ -1,0 +1,111 @@
+/* 
+  Each character is a "profile" row: picture on one side,
+  info on the other. Every other row flips sides.
+   */
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-l);
+  margin-bottom: var(--space-l);
+}
+
+/* Even-numbered profiles flip so the picture is on the right */
+.profile:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+.profile figure {
+  flex: 0 0 260px;
+  margin: 0;
+}
+
+.profile img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;        /* crops the photo to a circle without stretching it */
+  object-position: top;     /* keeps the face in frame */
+  border: 6px solid var(--gold);
+  border-radius: 50%;
+  background-color: var(--wood);
+}
+
+.profile figcaption {
+  text-align: center;
+  margin-top: var(--space-s);
+  color: var(--cream-muted);
+  font-size: 0.95rem;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+/* Nickname shown under the character's name */
+.nickname {
+  font-style: italic;
+  color: var(--neon-green);
+}
+
+/* Small photo-credit line under each character image */
+.photo-credit {
+  display: block;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Played by / Job details as a definition list */
+.details {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem var(--space-m);
+  margin: 0 0 var(--space-m);
+  padding: var(--space-s) var(--space-m);
+  border-left: 4px solid var(--gold);
+  background-color: var(--wood-darkest);
+}
+
+.details dt {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.details dd {
+  margin: 0;
+}
+
+/* Supporting characters table-like list */
+.supporting {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-m);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.supporting h3 {
+  color: var(--neon-green);
+}
+
+/* 
+  MEDIA QUERY - small screens, 700px and
+  narrower. Profiles stack vertically (picture on top) and
+  the supporting-cast grid becomes a single column.
+    */
+@media (max-width: 700px) {
+  .profile,
+  .profile:nth-of-type(even) {
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .profile figure {
+    flex-basis: auto;
+    width: 200px;
+  }
+
+  .supporting {
+    grid-template-columns: 1fr;
+  }
+}

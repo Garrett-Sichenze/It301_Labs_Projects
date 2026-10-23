@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- Home Page. Styled to look like a bar. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fan site for It's Always Sunny in Philadelphia: the premise, the gang, favorite episodes, behind-the-scenes facts and recipes from the show.">
+  <title>Paddy's Pub | An It's Always Sunny Fan Site</title>
+
+  <!-- Google Fonts: Bebas Neue (headings), Source Sans 3 (body), Monoton (neon signs) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Monoton&amp;family=Source+Sans+3:wght@400;700&amp;display=swap">
+
+  <!-- Shared styles for every page and styles only for this page -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <!-- Skip link lets keyboard users jump past the navigation -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <p class="site-title">It's Always Sunny in Philadelphia</p>
+    <p class="site-tagline">A fan site for people who never want to leave Paddy's Pub</p>
+  </header>
+
+  <!-- Nav Bar -->
+  <nav class="main-nav" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="characters.html">The Gang</a></li>
+      <li><a href="episodes.html">Episodes</a></li>
+      <li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Brick wall with the neon bar sign -->
+    <section class="bar-wall" aria-labelledby="welcome-heading">
+      <p class="open-sign">Open</p>
+      <h1 id="welcome-heading" class="neon-sign">Paddy's Pub</h1>
+      <p class="welcome">
+        Pull up a stool. This is a fan site for <em>It's Always Sunny in Philadelphia</em>,
+        the comedy about five terrible people who run a failing Irish bar in South Philly.
+      </p>
+      <a class="btn" href="characters.html">Meet the Gang</a>
+    </section>
+
+    <!-- Chalkboard with the premise, next to a picture -->
+    <div class="bar-back">
+      <section class="chalkboard" aria-labelledby="premise-heading">
+        <h2 id="premise-heading">Today's Special: The Premise</h2>
+        <p>
+          Charlie, Mac, Dennis, Dee and Frank (known as "the gang") own Paddy's Pub, a dive bar
+          that almost never has customers. Instead of running the bar, they spend every episode
+          chasing get-rich-quick schemes, picking fights with each other and making every situation
+          worse. The joke is that nobody ever learns a lesson.
+        </p>
+        <ul>
+          <li>Many episode titles start with "The Gang..." (like "The Gang Buys a Boat").</li>
+          <li>The characters are selfish on purpose; the show makes fun of their bad behavior.</li>
+          <li>It mixes dark humor, physical comedy and surprisingly good musical episodes.</li>
+        </ul>
+      </section>
+
+      <figure>
+        <img src="images/beer-mug.svg" alt="Illustration of a foamy mug of beer sitting on a wooden bar" width="300" height="300">
+        <figcaption>Pull up a stool and grab a cold one.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Bar counter with quick facts on drink coasters -->
+    <section class="bar-counter" aria-labelledby="facts-heading">
+      <h2 id="facts-heading">Facts on the Bar</h2>
+      <ul class="coasters">
+        <li><strong>2005</strong>Premiered on FX on August 4</li>
+        <li><strong>18</strong>Seasons so far</li>
+        <li><strong>#1</strong>Longest-running live-action sitcom in U.S. history</li>
+        <li><strong>FXX</strong>Its network since 2013</li>
+        <li><strong>5</strong>Members of the gang</li>
+      </ul>
+    </section>
+
+    <!-- Short description and links to the other pages -->
+    <section aria-labelledby="explore-heading">
+      <h2 id="explore-heading">Pick a Booth</h2>
+      <p>
+        The show was created by Rob Mac (formerly Rob McElhenney) and developed with
+        Glenn Howerton and Charlie Day, who all star in it alongside Kaitlin Olson and
+        Danny DeVito. Its 18th season premiered on August 17, 2026. Explore the rest of the bar:
+      </p>
+      <div class="booths">
+        <article class="card">
+          <h3><a href="characters.html">The Gang</a></h3>
+          <p>Who each character is and the actor who plays them.</p>
+        </article>
+        <article class="card">
+          <h3><a href="episodes.html">Episodes</a></h3>
+          <p>My favorite stand-out episodes and the seasons they come from.</p>
+        </article>
+        <article class="card">
+          <h3><a href="behind-the-scenes.html">Behind the Scenes</a></h3>
+          <p>Filming locations, production history and fun facts.</p>
+        </article>
+        <article class="card">
+          <h3><a href="recipes.html">Recipes</a></h3>
+          <p>Food and drinks from the show, plus my reviews of each.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <ul>
+      <li><a href="https://www.fxnetworks.com/shows/its-always-sunny-in-philadelphia">Official FX Page</a></li>
+      <li><a href="https://www.imdb.com/title/tt0472954/">IMDb Listing</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/It%27s_Always_Sunny_in_Philadelphia">Wikipedia Article</a></li>
+    </ul>
+  </footer>
+</body>
+</html>

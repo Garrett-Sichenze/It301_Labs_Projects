@@ -1,0 +1,126 @@
+/* 
+  A quick-reference table, then a grid of episode cards.
+  Each card has a round season badge pinned to its corner.
+   */
+
+/* Quick-reference table */
+.episode-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-l);
+  background-color: var(--wood-dark);
+}
+
+.episode-table caption {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  text-align: left;
+  padding-bottom: var(--space-s);
+  color: var(--gold);
+}
+
+.episode-table th,
+.episode-table td {
+  padding: var(--space-s) var(--space-m);
+  text-align: left;
+  border-bottom: 1px solid var(--wood-light);
+}
+
+.episode-table thead th {
+  background-color: var(--wood);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+}
+
+/* Zebra stripes make rows easier to read */
+.episode-table tbody tr:nth-child(odd) {
+  background-color: var(--wood-darkest);
+}
+
+/* Episode cards */
+.episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: var(--space-l) var(--space-m);
+}
+
+.episode-card {
+  /* Positioning: relative, so the season badge can be
+     placed in the corner with absolute positioning */
+  position: relative;
+  padding-top: var(--space-l);
+}
+
+/* Round "S4"-style badge. */
+.season-badge {
+  position: absolute;
+  top: -22px;
+  right: -12px;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--neon-green);
+  color: var(--wood-darkest);
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  box-shadow: 0 0 12px var(--neon-green);
+}
+
+.episode-card h3 {
+  color: var(--cream);
+  padding-right: var(--space-m);
+}
+
+/* Small label above the why I love it text */
+.why {
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+
+.episode-card blockquote {
+  margin: 0;
+  padding: var(--space-s) var(--space-m);
+  border-left: 4px solid var(--neon-green);
+  background-color: var(--wood-darkest);
+  font-style: italic;
+}
+
+.episode-card blockquote p {
+  margin: 0;
+}
+
+/* 
+  MEDIA QUERY - small screens, 700px and
+  narrower. Table text shrinks and cells get less padding;
+  the badge moves inside the card so it doesn't hang off
+  the edge of a narrow screen.
+   */
+@media (max-width: 700px) {
+  .episode-table {
+    font-size: 0.95rem;
+  }
+
+  .episode-table th,
+  .episode-table td {
+    padding: 0.5rem;
+  }
+
+  .season-badge {
+    top: var(--space-s);
+    right: var(--space-s);
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+
+  .episode-card h3 {
+    padding-right: 60px;
+  }
+}
