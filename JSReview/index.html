@@ -80,54 +80,96 @@
     <script>
         const site = 'https://jsonplaceholder.typicode.com/posts';
 
+        let posts = [];
 
-        const getinfo = async()=>{
-            try{
-            let result = await fetch(site);
-            result = await result.json();
-            console.table(result);
-
-            let uid = document.getElementById('userID');
-            document.getElementById('filterBtn').addEventListener('click', function(){
-            if (uid == result.userid){
-                for (let i = 0; i < result.length; i++){
-                    if (uid == result.userid){
-                    let article = document.createElement('article');
-                    document.body.appendChild(article);
-                    
-                    let title = result.title;
-                    let h2 = document.createElement('h2');
-                    h2.textContent = result[i].title;
-
-                    let p = document.createElement('p');
-                    p.textContent = result[i].body;
-                    
-                    article.append(h2);
-                    article.append(p);
-                };}
-            }
+        const clearPosts = () => {
+            document.querySelectorAll('article').forEach((article) => {
+                article.remove();
             });
-            else{
-
-                for (let i = 0; i < result.length; i++){
-                let article = document.createElement('article');
-                document.body.appendChild(article);
-
-                let title = result.title;
-                let h2 = document.createElement('h2');
-                h2.textContent = result[i].title;
-
-                let p = document.createElement('p');
-                p.textContent = result[i].body;
-                
-                article.append(h2);
-                article.append(p);
-                };}
-        }catch{(reason)=>console.log(reason);}
         };
-        getinfo(site);
-        
 
+        const displayPost = (post) => {
+            let article = document.createElement('article');
+
+            let h2 = document.createElement('h2');
+            h2.textContent = post.title;
+
+            let ids = document.createElement('p');
+            ids.textContent = `User ID: ${post.userId} | Post ID: ${post.id}`;
+
+            let p = document.createElement('p');
+            p.textContent = post.body;
+
+            article.append(h2);
+            article.append(ids);
+            article.append(p);
+            document.body.appendChild(article);
+        };
+
+        const displayPosts = (list) => {
+            for (let i = 0; i < list.length; i++) {
+                displayPost(list[i]);
+            }
+        };
+
+        const getinfo = async () => {
+            try {
+                let response = await fetch(site);
+                posts = await response.json();
+
+                console.table(posts);
+
+                displayPosts(posts);
+            } catch (reason) {
+                console.log(reason);
+            }
+        };
+
+        document.getElementById('filterBtn').addEventListener('click', function () {
+            let uid = Number(document.getElementById('userID').value);
+
+            if (!uid) {
+                console.log('Please choose a user.');
+                return;
+            }
+
+            let filtered = posts.filter((post) => post.userId === uid);
+            console.table(filtered);
+        });
+
+        document.getElementById('displayUserBtn').addEventListener('click', function () {
+            let uid = Number(document.getElementById('displayUserID').value);
+
+            clearPosts();
+
+            if (uid < 1 || uid > 10) {
+                let article = document.createElement('article');
+                article.textContent = 'Please enter a User ID from 1 to 10.';
+                document.body.appendChild(article);
+                return;
+            }
+
+            let userPosts = posts.filter((post) => post.userId === uid);
+            displayPosts(userPosts);
+        });
+
+        document.getElementById('findBtn').addEventListener('click', function () {
+            let pid = Number(document.getElementById('postID').value);
+
+            clearPosts();
+
+            let found = posts.find((post) => post.id === pid);
+
+            if (found) {
+                displayPost(found);
+            } else {
+                let article = document.createElement('article');
+                article.textContent = `Post ${pid || ''} not found.`;
+                document.body.appendChild(article);
+            }
+        });
+
+        getinfo();
     </script>
 
 </body>
