@@ -27,7 +27,6 @@
             cursor: pointer;
         }
 
-        /* Password rules are hidden until the user starts typing */
         #passRules {
             display: none;
             margin: 0;
@@ -71,17 +70,14 @@
         const ruleSpecial = document.getElementById('ruleSpecial');
         const ruleUpper = document.getElementById('ruleUpper');
 
-        // A. Submit event - the browser already checked required fields and email format
         form.addEventListener('submit', (event) => {
             event.preventDefault();
             window.location.href = "success.html";
         });
 
-        // B. Input event - check the password rules as the user types
         passInput.addEventListener('input', () => {
             const password = passInput.value;
 
-            // Show the rules once the user starts typing
             passRules.style.display = 'block';
 
             const hasLength = password.length >= 6;
