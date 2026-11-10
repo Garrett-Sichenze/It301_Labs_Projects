@@ -5,31 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lab16</title>
     <style>
-        #passRules{
-            visibility: hidden;
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 320px;
+        }
+
+        input {
+            padding: 6px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        /* Password rules are hidden until the user starts typing */
+        #passRules {
+            display: none;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .invalid {
+            color: red;
+        }
+
+        .valid {
+            color: green;
         }
     </style>
 </head>
 <body>
     <form id="myForm">
-        <label for="user">Username</label>
-            <input type="text" id = "usern" required>
+        <label for="usern">Name</label>
+        <input type="text" id="usern" placeholder="Enter your name" required>
 
-        <label for="email">Email</label>
-            <input type="email" id = "uemail" required>
+        <label for="uemail">Email</label>
+        <input type="email" id="uemail" placeholder="example@email.com" required>
 
-        <label for="password">Password</label>
-            <input type="password" id="upass" required>
-            <p id="passRules">Password must be at least 6 characters, must include a special characterand must include an uppercase letter</p>
-        <button id="subBttn">Submit</button>
+        <label for="upass">Password</label>
+        <input type="password" id="upass" placeholder="Enter a password" required>
+
+        <ul id="passRules">
+            <li id="ruleLength" class="invalid">At least 6 characters</li>
+            <li id="ruleSpecial" class="invalid">Must include a special character (!@#$...)</li>
+            <li id="ruleUpper" class="invalid">Must include an uppercase letter (A-Z)</li>
+        </ul>
+
+        <button type="submit" id="subBttn">Submit</button>
     </form>
 
     <script>
         const form = document.getElementById('myForm');
-        form.addEventListener('submit', (event)=>{
-            event.preventDefault()
+        const passInput = document.getElementById('upass');
+        const passRules = document.getElementById('passRules');
+        const ruleLength = document.getElementById('ruleLength');
+        const ruleSpecial = document.getElementById('ruleSpecial');
+        const ruleUpper = document.getElementById('ruleUpper');
+
+        // A. Submit event - the browser already checked required fields and email format
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
             window.location.href = "success.html";
-        })
+        });
+
+        // B. Input event - check the password rules as the user types
+        passInput.addEventListener('input', () => {
+            const password = passInput.value;
+
+            // Show the rules once the user starts typing
+            passRules.style.display = 'block';
+
+            const hasLength = password.length >= 6;
+            const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const hasUpper = /[A-Z]/.test(password);
+
+            ruleLength.classList.toggle("valid", hasLength);
+            ruleLength.classList.toggle("invalid", !hasLength);
+
+            ruleSpecial.classList.toggle("valid", hasSpecial);
+            ruleSpecial.classList.toggle("invalid", !hasSpecial);
+
+            ruleUpper.classList.toggle("valid", hasUpper);
+            ruleUpper.classList.toggle("invalid", !hasUpper);
+        });
     </script>
 </body>
 </html>
