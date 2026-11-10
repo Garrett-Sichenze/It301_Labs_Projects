@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab16</title>
+    <style>
+        #passRules{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="user">Username</label>
+            <input type="text" id = "usern" required>
+
+        <label for="email">Email</label>
+            <input type="email" id = "uemail" required>
+
+        <label for="password">Password</label>
+            <input type="password" id="upass" required>
+            <p id="passRules">Password must be at least 6 characters, must include a special characterand must include an uppercase letter</p>
+        <button id="subBttn">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('myForm');
+        form.addEventListener('submit', (event)=>{
+            event.preventDefault()
+            window.location.href = "success.html";
+        })
+    </script>
+</body>
+</html>
